@@ -51,7 +51,7 @@ public abstract class ObjectXmlSerializationExtensionsFixture
 			var xmlBinary = new FullyQualifiedDummy().SerializeAsXmlBinary();
 			xmlBinary.ToArray()
 				.Should()
-				.BeEquivalentTo(new UTF8Encoding(encoderShouldEmitUTF8Identifier: false).GetBytes($"<q:DummyXml xmlns:q=\"https://schemas.aprico.be\"><q:Id>{Guid.Empty}</q:Id></q:DummyXml>"));
+				.BeEquivalentTo(new UTF8Encoding(encoderShouldEmitUTF8Identifier: false).GetBytes($"<q:DummyXml xmlns:q=\"https://schemas.yuma.be\"><q:Id>{Guid.Empty}</q:Id></q:DummyXml>"));
 		}
 
 		[Fact]
@@ -60,7 +60,7 @@ public abstract class ObjectXmlSerializationExtensionsFixture
 			var xmlBinary = new PartiallyQualifiedDummy().SerializeAsXmlBinary();
 			xmlBinary.ToArray()
 				.Should()
-				.BeEquivalentTo("<q:PartiallyQualifiedDummy xmlns:q=\"https://schemas.aprico.be\" />"u8.ToArray());
+				.BeEquivalentTo("<q:PartiallyQualifiedDummy xmlns:q=\"https://schemas.yuma.be\" />"u8.ToArray());
 		}
 	}
 
@@ -93,7 +93,7 @@ public abstract class ObjectXmlSerializationExtensionsFixture
 		{
 			var xmlString = new FullyQualifiedDummy().SerializeAsXmlString();
 			xmlString.Should()
-				.Be($"<q:DummyXml xmlns:q=\"https://schemas.aprico.be\"><q:Id>{Guid.Empty}</q:Id></q:DummyXml>");
+				.Be($"<q:DummyXml xmlns:q=\"https://schemas.yuma.be\"><q:Id>{Guid.Empty}</q:Id></q:DummyXml>");
 		}
 
 		[Fact]
@@ -101,7 +101,7 @@ public abstract class ObjectXmlSerializationExtensionsFixture
 		{
 			var xmlString = new PartiallyQualifiedDummy().SerializeAsXmlString();
 			xmlString.Should()
-				.Be("<q:PartiallyQualifiedDummy xmlns:q=\"https://schemas.aprico.be\" />");
+				.Be("<q:PartiallyQualifiedDummy xmlns:q=\"https://schemas.yuma.be\" />");
 		}
 	}
 

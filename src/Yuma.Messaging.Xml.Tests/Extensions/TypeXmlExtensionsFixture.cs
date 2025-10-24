@@ -71,7 +71,7 @@ public abstract class TypeXmlExtensionsFixture
 		{
 			var qualifiedName = typeof(FullyQualifiedDummy).GetXmlFullyQualifiedName();
 			qualifiedName.Should()
-				.Be("https://schemas.aprico.be#DummyXml");
+				.Be("https://schemas.yuma.be#DummyXml");
 		}
 
 		[Fact]
@@ -79,7 +79,7 @@ public abstract class TypeXmlExtensionsFixture
 		{
 			var qualifiedName = typeof(PartiallyQualifiedDummy).GetXmlFullyQualifiedName();
 			qualifiedName.Should()
-				.Be($"https://schemas.aprico.be#{nameof(PartiallyQualifiedDummy)}");
+				.Be($"https://schemas.yuma.be#{nameof(PartiallyQualifiedDummy)}");
 		}
 	}
 

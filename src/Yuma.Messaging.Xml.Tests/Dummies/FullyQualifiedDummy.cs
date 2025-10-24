@@ -21,7 +21,7 @@ using System.Xml.Serialization;
 
 namespace Yuma.Dummies;
 
-[XmlRoot("DummyXml", Namespace = "https://schemas.aprico.be")]
+[XmlRoot("DummyXml", Namespace = "https://schemas.yuma.be")]
 public sealed record FullyQualifiedDummy
 {
 	public Guid Id { get; set; }

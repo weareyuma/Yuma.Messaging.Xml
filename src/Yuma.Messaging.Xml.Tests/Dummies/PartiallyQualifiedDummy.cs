@@ -20,5 +20,5 @@ using System.Xml.Serialization;
 
 namespace Yuma.Dummies;
 
-[XmlRoot(Namespace = "https://schemas.aprico.be")]
+[XmlRoot(Namespace = "https://schemas.yuma.be")]
 public sealed class PartiallyQualifiedDummy;

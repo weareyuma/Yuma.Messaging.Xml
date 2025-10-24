@@ -40,7 +40,7 @@ public abstract class ObjectXmlExtensionsFixture
 		{
 			new FullyQualifiedDummy().GetXmlFullyQualifiedName()
 				.Should()
-				.Be("https://schemas.aprico.be#DummyXml");
+				.Be("https://schemas.yuma.be#DummyXml");
 		}
 	}
 
