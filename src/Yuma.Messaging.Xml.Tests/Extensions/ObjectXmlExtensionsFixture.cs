@@ -16,18 +16,33 @@
 
 #endregion
 
-using FluentAssertions.Extensibility;
-using Yuma;
+using System;
+using Yuma.Dummies;
 
-[assembly: AssertionEngineInitializer(typeof(FluentAssertionEngineInitializer), nameof(FluentAssertionEngineInitializer.AcknowledgeSoftWarning))]
+namespace Yuma.Extensions;
 
-namespace Yuma;
-
-// see https://fluentassertions.com/introduction#licensing
-file static class FluentAssertionEngineInitializer
+public abstract class ObjectXmlExtensionsFixture
 {
-	public static void AcknowledgeSoftWarning()
+	#region Nested Type: GetXmlFullyQualifiedName
+
+	public class GetXmlFullyQualifiedName : ObjectXmlExtensionsFixture
 	{
-		License.Accepted = true;
+		[Fact]
+		public void FailsForUnqualified()
+		{
+			Invoking(static () => new UnqualifiedDummy().GetXmlFullyQualifiedName())
+				.Should()
+				.Throw<InvalidOperationException>();
+		}
+
+		[Fact]
+		public void SucceedsForQualified()
+		{
+			new FullyQualifiedDummy().GetXmlFullyQualifiedName()
+				.Should()
+				.Be("https://schemas.aprico.be#DummyXml");
+		}
 	}
+
+	#endregion
 }

@@ -16,18 +16,13 @@
 
 #endregion
 
-using FluentAssertions.Extensibility;
-using Yuma;
+using System.Diagnostics.CodeAnalysis;
+using System.Text;
 
-[assembly: AssertionEngineInitializer(typeof(FluentAssertionEngineInitializer), nameof(FluentAssertionEngineInitializer.AcknowledgeSoftWarning))]
+namespace Yuma.Xml;
 
-namespace Yuma;
-
-// see https://fluentassertions.com/introduction#licensing
-file static class FluentAssertionEngineInitializer
+[SuppressMessage("ReSharper", "MemberCanBeInternal", Justification = "Public API.")]
+public static class XmlSerializationSettings
 {
-	public static void AcknowledgeSoftWarning()
-	{
-		License.Accepted = true;
-	}
+	public static Encoding Encoding { get; } = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false); // no BOM
 }

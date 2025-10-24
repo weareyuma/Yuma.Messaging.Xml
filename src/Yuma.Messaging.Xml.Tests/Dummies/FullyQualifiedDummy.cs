@@ -16,18 +16,13 @@
 
 #endregion
 
-using FluentAssertions.Extensibility;
-using Yuma;
+using System;
+using System.Xml.Serialization;
 
-[assembly: AssertionEngineInitializer(typeof(FluentAssertionEngineInitializer), nameof(FluentAssertionEngineInitializer.AcknowledgeSoftWarning))]
+namespace Yuma.Dummies;
 
-namespace Yuma;
-
-// see https://fluentassertions.com/introduction#licensing
-file static class FluentAssertionEngineInitializer
+[XmlRoot("DummyXml", Namespace = "https://schemas.aprico.be")]
+public sealed record FullyQualifiedDummy
 {
-	public static void AcknowledgeSoftWarning()
-	{
-		License.Accepted = true;
-	}
+	public Guid Id { get; set; }
 }

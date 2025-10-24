@@ -16,18 +16,22 @@
 
 #endregion
 
-using FluentAssertions.Extensibility;
-using Yuma;
+using AutoFixture.Xunit2;
+using Yuma.Dummies;
+using Yuma.Xml.Extensions;
 
-[assembly: AssertionEngineInitializer(typeof(FluentAssertionEngineInitializer), nameof(FluentAssertionEngineInitializer.AcknowledgeSoftWarning))]
+namespace Yuma.Messaging.Message.Deserializer;
 
-namespace Yuma;
-
-// see https://fluentassertions.com/introduction#licensing
-file static class FluentAssertionEngineInitializer
+public class XmlBodyDeserializerFixture
 {
-	public static void AcknowledgeSoftWarning()
+	[Theory]
+	[AutoData]
+	public void SucceedsForRegisteredContract(FullyQualifiedDummy dummy)
 	{
-		License.Accepted = true;
+		dummy.SerializeAsXmlBinary()
+			.Deserialize(typeof(FullyQualifiedDummy))
+			.Should()
+			.BeOfType<FullyQualifiedDummy>()
+			.And.BeEquivalentTo(dummy);
 	}
 }
